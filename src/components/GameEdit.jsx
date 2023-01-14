@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from 'react';
+import GamesContext from '../context/games.jsx';
 
 function GameEdit({ game, onSubmit }) {
   const [title, setTitle] = useState(game.title);
+
+  const { editBookById } = useContext(GamesContext);
 
   // event handlers
   const handleChange = (event) => {
@@ -11,14 +14,15 @@ function GameEdit({ game, onSubmit }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    onSubmit(game.id, title);
+    onSubmit();
+    editBookById(game.id, title);
   };
 
   return (
-    <form className="book-edit" onSubmit={handleSubmit}>
+    <form className='book-edit' onSubmit={handleSubmit}>
       <label>Title</label>
-      <input className="input" value={title} onChange={handleChange} />
-      <button className="button is-primary">Update</button>
+      <input className='input' value={title} onChange={handleChange} />
+      <button className='button is-primary'>Update</button>
     </form>
   );
 }

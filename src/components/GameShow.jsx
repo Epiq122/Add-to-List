@@ -1,19 +1,21 @@
-import { useState } from "react";
-import GameEdit from "./GameEdit.jsx";
+import { useState, useContext } from 'react';
+import GamesContext from '../context/games.jsx';
+import GameEdit from './GameEdit.jsx';
 
-function GameShow({ game, onDelete, onEdit }) {
+function GameShow({ game }) {
   const [showEdit, setShowEdit] = useState(false);
+
+  const { deleteGameById } = useContext(GamesContext);
 
   // event handlers
   const handleDelete = () => {
-    onDelete(game.id);
+    deleteGameById(game.id);
   };
   const handleEdit = () => {
     setShowEdit(!showEdit);
   };
 
-  const handleSubmit = (id, newTitle) => {
-    onEdit(id, newTitle);
+  const handleSubmit = () => {
     setShowEdit(false);
   };
 
@@ -23,14 +25,14 @@ function GameShow({ game, onDelete, onEdit }) {
   }
 
   return (
-    <div className="book-show">
-      <img src={`https://picsum.photos/seed/${game.id}/300/200`} alt="pics" />
+    <div className='book-show'>
+      <img src={`https://picsum.photos/seed/${game.id}/300/200`} alt='pics' />
       <div>{content}</div>
-      <div className="actions">
-        <button className="edit" onClick={handleEdit}>
+      <div className='actions'>
+        <button className='edit' onClick={handleEdit}>
           Edit
         </button>
-        <button className="delete" onClick={handleDelete}>
+        <button className='delete' onClick={handleDelete}>
           Delete
         </button>
       </div>

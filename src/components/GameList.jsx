@@ -1,13 +1,16 @@
-import GameShow from "./GameShow.jsx";
+import { useContext } from 'react';
+import GamesContext from '../context/games.jsx';
 
-function GameList({ games, onDelete, onEdit }) {
+import GameShow from './GameShow.jsx';
+
+function GameList() {
+  const { games } = useContext(GamesContext);
+
   const renderedGames = games.map((game) => {
-    return (
-      <GameShow onDelete={onDelete} key={game.id} game={game} onEdit={onEdit} />
-    );
+    return <GameShow key={game.id} game={game} />;
   });
 
-  return <div className="book-list">{renderedGames}</div>;
+  return <div className='book-list'>{renderedGames}</div>;
 }
 
 export default GameList;
