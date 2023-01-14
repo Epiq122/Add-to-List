@@ -1,11 +1,11 @@
-import { useState, useContext } from 'react';
-import GamesContext from '../context/games.jsx';
+import { useState } from 'react';
+import useGamesContext from '../hooks/use-books-context.js';
 import GameEdit from './GameEdit.jsx';
 
 function GameShow({ game }) {
   const [showEdit, setShowEdit] = useState(false);
 
-  const { deleteGameById } = useContext(GamesContext);
+  const { deleteGameById } = useGamesContext();
 
   // event handlers
   const handleDelete = () => {

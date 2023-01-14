@@ -1,10 +1,8 @@
-import { useContext } from 'react';
-import GamesContext from '../context/games.jsx';
-
+import useGamesContext from '../hooks/use-books-context.js';
 import GameShow from './GameShow.jsx';
 
 function GameList() {
-  const { games } = useContext(GamesContext);
+  const { games } = useGamesContext();
 
   const renderedGames = games.map((game) => {
     return <GameShow key={game.id} game={game} />;

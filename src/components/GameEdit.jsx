@@ -1,10 +1,10 @@
-import { useState, useContext } from 'react';
-import GamesContext from '../context/games.jsx';
+import { useState } from 'react';
+import useGamesContext from '../hooks/use-books-context.js';
 
 function GameEdit({ game, onSubmit }) {
   const [title, setTitle] = useState(game.title);
 
-  const { editBookById } = useContext(GamesContext);
+  const { editBookById } = useGamesContext();
 
   // event handlers
   const handleChange = (event) => {

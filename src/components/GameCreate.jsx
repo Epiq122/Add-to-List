@@ -1,12 +1,13 @@
-import { useState, useContext } from 'react';
-import GamesContext from '../context/games.jsx';
+import { useState } from 'react';
+
+import useGamesContext from '../hooks/use-books-context.js';
 
 function GameCreate() {
   //state
   const [title, setTitle] = useState('');
 
   // context
-  const { handleCreateGame } = useContext(GamesContext);
+  const { handleCreateGame } = useGamesContext();
 
   // event handlers
   const handleChange = (event) => {
